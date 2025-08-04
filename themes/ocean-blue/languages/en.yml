@@ -1,0 +1,89 @@
+menu:
+  home: Home
+  archives: Archives
+  categories: Categories
+  tags: Tags
+  about: About
+
+nav:
+  prev: Previous
+  next: Next
+  older: Older Posts
+  newer: Newer Posts
+
+post:
+  posted: Posted on
+  updated: Updated on
+  in: in
+  read_more: Read More
+  untitled: Untitled
+  toc_empty: Table of contents is empty
+  copyright: Copyright Notice
+  related_posts: Related Posts
+
+page:
+  totally: Total
+  posts: posts
+
+comment:
+  comments: Comments
+  no_comment: No comments yet
+  reply: Reply
+  cancel_reply: Cancel Reply
+  submit: Submit Comment
+  name: Name
+  email: Email
+  website: Website
+  message: Message
+
+counter:
+  tag_cloud:
+    zero: No tags
+    one: Currently 1 tag in total
+    other: Currently %d tags in total
+
+  categories:
+    zero: No categories
+    one: Currently 1 category in total
+    other: Currently %d categories in total
+
+  archive_posts:
+    zero: No posts
+    one: Currently 1 post in total
+    other: Currently %d posts in total
+
+search:
+  search: Search
+  no_result: No search results found
+
+widget:
+  recent_posts: Recent Posts
+  archives: Archives
+  categories: Categories
+  tags: Tags
+  tag_cloud: Tag Cloud
+  links: Links
+
+footer:
+  powered: Powered by %s
+  theme: Theme
+
+accessibility:
+  nav_toggle: Toggle Navigation Menu
+  back_to_top: Back to Top
+  external_link: External Link
+
+date:
+  formats:
+    default: MMMM Do, YYYY
+    short: MMM DD
+    long: MMMM Do, YYYY HH:mm
+
+time:
+  just_now: Just now
+  minutes_ago: '%d minutes ago'
+  hours_ago: '%d hours ago'
+  days_ago: '%d days ago'
+  weeks_ago: '%d weeks ago'
+  months_ago: '%d months ago'
+  years_ago: '%d years ago'

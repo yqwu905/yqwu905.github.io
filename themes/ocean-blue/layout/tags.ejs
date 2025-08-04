@@ -1,0 +1,280 @@
+<div class="tags-page">
+  <header class="page-header">
+    <h1 class="page-title">标签</h1>
+    <div class="page-meta">
+      <span class="tags-count">共 <%- site.tags.length %> 个标签</span>
+    </div>
+  </header>
+
+  <div class="tags-content">
+    <% if (site.tags.length) { %>
+      <!-- 标签云 -->
+      <div class="tags-cloud-section">
+        <h2 class="section-title">标签云</h2>
+        <div class="tags-cloud">
+          <% site.tags.sort('name').each(function(tag) { %>
+            <% var size = Math.min(Math.max(tag.posts.length, 1), 5) %>
+            <a href="<%- url_for(tag.path) %>" class="tag-cloud-item size-<%- size %>">
+              <%- tag.name %>
+              <span class="tag-count">(<%- tag.posts.length %>)</span>
+            </a>
+          <% }) %>
+        </div>
+      </div>
+
+      <!-- 标签列表 -->
+      <div class="tags-list-section">
+        <h2 class="section-title">标签列表</h2>
+        <div class="tags-list">
+          <% site.tags.sort('name').each(function(tag) { %>
+            <div class="tag-item">
+              <div class="tag-header">
+                <h3 class="tag-name">
+                  <a href="<%- url_for(tag.path) %>">#<%- tag.name %></a>
+                </h3>
+                <span class="tag-count"><%- tag.posts.length %> 篇文章</span>
+              </div>
+              
+              <div class="tag-posts">
+                <% tag.posts.sort('date', -1).limit(3).each(function(post) { %>
+                  <article class="tag-post">
+                    <time class="post-date"><%- date(post.date, 'MM-DD') %></time>
+                    <h4 class="post-title">
+                      <a href="<%- url_for(post.path) %>"><%- post.title %></a>
+                    </h4>
+                  </article>
+                <% }) %>
+                <% if (tag.posts.length > 3) { %>
+                  <div class="view-more">
+                    <a href="<%- url_for(tag.path) %>">查看更多 (<%- tag.posts.length - 3 %> 篇)</a>
+                  </div>
+                <% } %>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    <% } else { %>
+      <div class="empty-state">
+        <p>暂无标签</p>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<style>
+.tags-page .page-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-xl);
+  border-bottom: 2px solid var(--primary-light);
+}
+
+.tags-page .page-title {
+  font-size: var(--font-size-3xl);
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.tags-page .tags-count {
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+.section-title {
+  font-size: var(--font-size-2xl);
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: var(--border-radius-sm);
+}
+
+.tags-cloud-section {
+  background-color: var(--background-paper);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-light);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  justify-content: center;
+}
+
+.tag-cloud-item {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--accent-light);
+  color: var(--primary-dark);
+  text-decoration: none;
+  border-radius: var(--border-radius-md);
+  transition: all var(--transition-fast);
+  font-weight: 500;
+}
+
+.tag-cloud-item.size-1 { font-size: var(--font-size-xs); }
+.tag-cloud-item.size-2 { font-size: var(--font-size-sm); }
+.tag-cloud-item.size-3 { font-size: var(--font-size-base); }
+.tag-cloud-item.size-4 { font-size: var(--font-size-lg); }
+.tag-cloud-item.size-5 { font-size: var(--font-size-xl); }
+
+.tag-cloud-item:hover {
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  transform: translateY(-2px);
+}
+
+.tag-cloud-item .tag-count {
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+.tags-list-section {
+  background-color: var(--background-paper);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-light);
+  padding: var(--spacing-xl);
+}
+
+.tags-list {
+  display: grid;
+  gap: var(--spacing-xl);
+}
+
+.tag-item {
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius-md);
+  transition: all var(--transition-normal);
+}
+
+.tag-item:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-light);
+}
+
+.tag-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.tag-name {
+  margin: 0;
+  font-size: var(--font-size-lg);
+}
+
+.tag-name a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.tag-name a:hover {
+  color: var(--primary-dark);
+}
+
+.tag-count {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  background-color: var(--background-secondary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+}
+
+.tag-posts {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.tag-post {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: var(--spacing-md);
+  align-items: center;
+  padding: var(--spacing-xs) 0;
+}
+
+.tag-post .post-date {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.tag-post .post-title {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.tag-post .post-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.tag-post .post-title a:hover {
+  color: var(--primary-color);
+}
+
+.view-more {
+  text-align: right;
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--border-light);
+}
+
+.view-more a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+.view-more a:hover {
+  text-decoration: underline;
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-3xl);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .tags-cloud {
+    justify-content: flex-start;
+  }
+
+  .tag-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .tag-post {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xs);
+  }
+
+  .tag-post .post-date {
+    order: 1;
+  }
+}
+</style>

@@ -1,0 +1,89 @@
+menu:
+  home: 首页
+  archives: 归档
+  categories: 分类
+  tags: 标签
+  about: 关于
+
+nav:
+  prev: 上一篇
+  next: 下一篇
+  older: 更早的文章
+  newer: 更新的文章
+
+post:
+  posted: 发表于
+  updated: 更新于
+  in: 分类
+  read_more: 阅读全文
+  untitled: 无标题
+  toc_empty: 目录为空
+  copyright: 版权声明
+  related_posts: 相关文章
+
+page:
+  totally: 共
+  posts: 篇文章
+
+comment:
+  comments: 评论
+  no_comment: 暂无评论
+  reply: 回复
+  cancel_reply: 取消回复
+  submit: 提交评论
+  name: 姓名
+  email: 邮箱
+  website: 网站
+  message: 留言内容
+
+counter:
+  tag_cloud:
+    zero: 暂无标签
+    one: 目前共计 1 个标签
+    other: 目前共计 %d 个标签
+
+  categories:
+    zero: 暂无分类
+    one: 目前共计 1 个分类  
+    other: 目前共计 %d 个分类
+
+  archive_posts:
+    zero: 暂无文章
+    one: 目前共计 1 篇文章
+    other: 目前共计 %d 篇文章
+
+search:
+  search: 搜索
+  no_result: 没有找到任何搜索结果
+  
+widget:
+  recent_posts: 最近文章
+  archives: 归档
+  categories: 分类  
+  tags: 标签
+  tag_cloud: 标签云
+  links: 友情链接
+
+footer:
+  powered: 由 %s 强力驱动
+  theme: 主题
+
+accessibility:
+  nav_toggle: 切换导航菜单
+  back_to_top: 回到顶部
+  external_link: 外部链接
+
+date:
+  formats:
+    default: YYYY年MM月DD日
+    short: MM-DD
+    long: YYYY年MM月DD日 HH:mm
+
+time:
+  just_now: 刚刚
+  minutes_ago: '%d 分钟前'
+  hours_ago: '%d 小时前'
+  days_ago: '%d 天前'
+  weeks_ago: '%d 周前'
+  months_ago: '%d 个月前'
+  years_ago: '%d 年前'

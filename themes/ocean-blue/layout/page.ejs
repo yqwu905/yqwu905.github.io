@@ -1,0 +1,19 @@
+<article class="page">
+  <header class="page-header">
+    <h1 class="page-title"><%- page.title %></h1>
+    <% 
+    // 不显示日期的页面类型
+    const hideDateTypes = ['categories', 'tags'];
+    const showDate = page.date && !hideDateTypes.includes(page.type);
+    %>
+    <% if (showDate) { %>
+      <div class="page-meta">
+        <time class="page-date"><%- date(page.date, theme.article.date_format) %></time>
+      </div>
+    <% } %>
+  </header>
+
+  <div class="page-content">
+    <%- page.content %>
+  </div>
+</article>

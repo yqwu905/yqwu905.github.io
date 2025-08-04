@@ -1,0 +1,40 @@
+<header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <div class="site-branding">
+        <h1 class="site-title">
+          <a href="<%- url_for('/') %>"><%- config.title %></a>
+        </h1>
+        <% if (config.subtitle) { %>
+          <p class="site-description"><%- config.subtitle %></p>
+        <% } %>
+      </div>
+      
+      <nav class="main-navigation">
+        <ul class="nav-menu">
+          <% for (let name in theme.menu) { %>
+            <li class="nav-item">
+              <a href="<%- url_for(theme.menu[name]) %>" class="nav-link"><%- name %></a>
+            </li>
+          <% } %>
+        </ul>
+        
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <ul class="mobile-nav-menu">
+    <% for (let name in theme.menu) { %>
+      <li class="mobile-nav-item">
+        <a href="<%- url_for(theme.menu[name]) %>" class="mobile-nav-link"><%- name %></a>
+      </li>
+    <% } %>
+  </ul>
+</div>

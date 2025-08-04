@@ -1,0 +1,191 @@
+<div class="categories-page">
+  <header class="page-header">
+    <h1 class="page-title">分类</h1>
+    <div class="page-meta">
+      <span class="categories-count">共 <%- site.categories.length %> 个分类</span>
+    </div>
+  </header>
+
+  <div class="categories-content">
+    <% if (site.categories.length) { %>
+      <div class="categories-list">
+        <% site.categories.sort('name').each(function(cat) { %>
+          <div class="category-item">
+            <div class="category-header">
+              <h2 class="category-name">
+                <a href="<%- url_for(cat.path) %>"><%- cat.name %></a>
+              </h2>
+              <span class="category-count"><%- cat.posts.length %> 篇文章</span>
+            </div>
+            
+            <div class="category-posts">
+              <% cat.posts.sort('date', -1).limit(5).each(function(post) { %>
+                <article class="category-post">
+                  <time class="post-date"><%- date(post.date, 'MM-DD') %></time>
+                  <h3 class="post-title">
+                    <a href="<%- url_for(post.path) %>"><%- post.title %></a>
+                  </h3>
+                </article>
+              <% }) %>
+              <% if (cat.posts.length > 5) { %>
+                <div class="view-more">
+                  <a href="<%- url_for(cat.path) %>">查看更多 (<%- cat.posts.length - 5 %> 篇)</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <div class="empty-state">
+        <p>暂无分类</p>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<style>
+.categories-page .page-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-xl);
+  border-bottom: 2px solid var(--primary-light);
+}
+
+.categories-page .page-title {
+  font-size: var(--font-size-3xl);
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.categories-page .categories-count {
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+.categories-list {
+  display: grid;
+  gap: var(--spacing-2xl);
+}
+
+.category-item {
+  background-color: var(--background-paper);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-light);
+  padding: var(--spacing-xl);
+  transition: all var(--transition-normal);
+}
+
+.category-item:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.category-name {
+  margin: 0;
+  font-size: var(--font-size-xl);
+}
+
+.category-name a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.category-name a:hover {
+  color: var(--primary-dark);
+}
+
+.category-count {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  background-color: var(--primary-light);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+}
+
+.category-posts {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.category-post {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: var(--spacing-md);
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+}
+
+.category-post .post-date {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.category-post .post-title {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+}
+
+.category-post .post-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.category-post .post-title a:hover {
+  color: var(--primary-color);
+}
+
+.view-more {
+  text-align: right;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-light);
+}
+
+.view-more a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.view-more a:hover {
+  text-decoration: underline;
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-3xl);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .category-post {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xs);
+  }
+
+  .category-post .post-date {
+    order: 1;
+  }
+}
+</style>

@@ -1,0 +1,78 @@
+<div class="sidebar-content">
+  <!-- Site Info Widget -->
+  <div class="widget site-info">
+    <div class="widget-content">
+      <h3 class="site-title"><%- config.title %></h3>
+      <% if (config.description) { %>
+        <p class="site-description"><%- config.description %></p>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- Recent Posts Widget -->
+  <div class="widget recent-posts">
+    <h4 class="widget-title">最近文章</h4>
+    <div class="widget-content">
+      <ul class="recent-posts-list">
+        <% site.posts.sort('date', -1).limit(5).each(function(post) { %>
+          <li class="recent-post-item">
+            <a href="<%- url_for(post.path) %>" class="recent-post-link">
+              <span class="recent-post-title"><%- post.title %></span>
+              <time class="recent-post-date"><%- date(post.date, 'MM-DD') %></time>
+            </a>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Categories Widget -->
+  <% if (site.categories.length) { %>
+    <div class="widget categories">
+      <h4 class="widget-title">分类</h4>
+      <div class="widget-content">
+        <ul class="categories-list">
+          <% site.categories.sort('name').each(function(cat) { %>
+            <li class="category-item">
+              <a href="<%- url_for(cat.path) %>" class="category-link">
+                <span class="category-name"><%- cat.name %></span>
+                <span class="category-count">(<%- cat.posts.length %>)</span>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  <% } %>
+
+  <!-- Tags Widget -->
+  <% if (site.tags.length) { %>
+    <div class="widget tags">
+      <h4 class="widget-title">标签</h4>
+      <div class="widget-content">
+        <div class="tags-cloud">
+          <% site.tags.sort('name').each(function(tag) { %>
+            <a href="<%- url_for(tag.path) %>" class="tag-link">
+              #<%- tag.name %>
+            </a>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  <% } %>
+
+  <!-- Archive Widget -->
+  <div class="widget archive">
+    <h4 class="widget-title">归档</h4>
+    <div class="widget-content">
+      <ul class="archive-list">
+        <%- list_archives({
+          show_count: true,
+          format: 'YYYY年MM月',
+          style: 'list',
+          separator: ' '
+        }) %>
+      </ul>
+    </div>
+  </div>
+</div>

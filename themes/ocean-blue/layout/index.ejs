@@ -1,0 +1,62 @@
+<div class="posts-container">
+  <% page.posts.each(function(post) { %>
+    <article class="post-card">
+      <% if (post.photos && post.photos.length) { %>
+        <div class="post-gallery">
+          <% post.photos.forEach(function(photo) { %>
+            <img src="<%- url_for(photo) %>" alt="">
+          <% }) %>
+        </div>
+      <% } %>
+      
+      <div class="post-content">
+        <header class="post-header">
+          <h2 class="post-title">
+            <a href="<%- url_for(post.path) %>"><%- post.title %></a>
+          </h2>
+          <div class="post-meta">
+            <time class="post-date"><%- date(post.date, theme.article.date_format) %></time>
+            <% if (theme.article.show_categories && post.categories && post.categories.length) { %>
+              <span class="post-category">
+                <% post.categories.each(function(cat) { %>
+                  <a href="<%- url_for(cat.path) %>"><%- cat.name %></a>
+                <% }) %>
+              </span>
+            <% } %>
+          </div>
+        </header>
+        
+        <div class="post-excerpt">
+          <% if (post.excerpt) { %>
+            <%- post.excerpt %>
+          <% } else { %>
+            <%- truncate(strip_html(post.content), {length: 200}) %>
+          <% } %>
+        </div>
+        
+        <% if (theme.article.show_tags && post.tags && post.tags.length) { %>
+          <div class="post-tags">
+            <% post.tags.each(function(tag) { %>
+              <a href="<%- url_for(tag.path) %>" class="tag">#<%- tag.name %></a>
+            <% }) %>
+          </div>
+        <% } %>
+        
+        <div class="post-actions">
+          <a href="<%- url_for(post.path) %>" class="read-more"><%- theme.article.excerpt_link %></a>
+        </div>
+      </div>
+    </article>
+  <% }) %>
+</div>
+
+<% if (page.total > 1) { %>
+  <nav class="pagination">
+    <%- paginator({
+      prev_text: '← 上一页',
+      next_text: '下一页 →',
+      mid_size: 1,
+      end_size: 1
+    }) %>
+  </nav>
+<% } %>

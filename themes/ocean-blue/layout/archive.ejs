@@ -1,0 +1,53 @@
+<div class="archive">
+  <header class="archive-header">
+    <h1 class="archive-title">
+      <% if (is_year()) { %>
+        <%- page.year %>年的文章
+      <% } else if (is_month()) { %>
+        <%- page.year %>年<%- page.month %>月的文章
+      <% } else { %>
+        文章归档
+      <% } %>
+    </h1>
+    <div class="archive-count">共 <%- page.posts.length %> 篇文章</div>
+  </header>
+
+  <div class="archive-content">
+    <% var last_year = 0 %>
+    <% page.posts.each(function(post) { %>
+      <% var year = date(post.date, 'YYYY') %>
+      <% if (last_year != year) { %>
+        <% if (last_year != 0) { %></div><% } %>
+        <div class="archive-year">
+          <h2 class="year-title"><%- year %></h2>
+        <% last_year = year %>
+      <% } %>
+      
+      <article class="archive-post">
+        <time class="archive-date"><%- date(post.date, 'MM-DD') %></time>
+        <h3 class="archive-post-title">
+          <a href="<%- url_for(post.path) %>"><%- post.title %></a>
+        </h3>
+        <% if (theme.article.show_categories && post.categories && post.categories.length) { %>
+          <div class="archive-categories">
+            <% post.categories.each(function(cat) { %>
+              <a href="<%- url_for(cat.path) %>" class="category"><%- cat.name %></a>
+            <% }) %>
+          </div>
+        <% } %>
+      </article>
+    <% }) %>
+    <% if (page.posts.length > 0) { %></div><% } %>
+  </div>
+</div>
+
+<% if (page.total > 1) { %>
+  <nav class="pagination">
+    <%- paginator({
+      prev_text: '← 上一页',
+      next_text: '下一页 →',
+      mid_size: 1,
+      end_size: 1
+    }) %>
+  </nav>
+<% } %>

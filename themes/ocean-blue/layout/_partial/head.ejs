@@ -1,0 +1,68 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<title>
+  <% if (page.title) { %>
+    <%- page.title %> - <%- config.title %>
+  <% } else { %>
+    <%- config.title %>
+    <% if (config.subtitle) { %> - <%- config.subtitle %><% } %>
+  <% } %>
+</title>
+
+<% if (page.description) { %>
+  <meta name="description" content="<%- page.description %>">
+<% } else if (config.description) { %>
+  <meta name="description" content="<%- config.description %>">
+<% } %>
+
+<% if (page.keywords) { %>
+  <meta name="keywords" content="<%- page.keywords %>">
+<% } else if (theme.keywords) { %>
+  <meta name="keywords" content="<%- theme.keywords %>">
+<% } %>
+
+<meta name="author" content="<%- config.author %>">
+
+<!-- Open Graph -->
+<meta property="og:type" content="<% if (is_post()) { %>article<% } else { %>website<% } %>">
+<meta property="og:title" content="<% if (page.title) { %><%- page.title %><% } else { %><%- config.title %><% } %>">
+<meta property="og:url" content="<%- url_for(page.path) %>">
+<meta property="og:site_name" content="<%- config.title %>">
+<% if (page.description) { %>
+  <meta property="og:description" content="<%- page.description %>">
+<% } else if (config.description) { %>
+  <meta property="og:description" content="<%- config.description %>">
+<% } %>
+<meta property="og:locale" content="<%- config.language || 'zh_CN' %>">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="<% if (page.title) { %><%- page.title %><% } else { %><%- config.title %><% } %>">
+<% if (page.description) { %>
+  <meta name="twitter:description" content="<%- page.description %>">
+<% } else if (config.description) { %>
+  <meta name="twitter:description" content="<%- config.description %>">
+<% } %>
+
+<!-- Favicon -->
+<% if (theme.favicon) { %>
+  <link rel="icon" href="<%- url_for(theme.favicon) %>">
+<% } %>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<%- css('css/style') %>
+<% if (theme.custom_css) { %>
+  <style><%- theme.custom_css %></style>
+<% } %>
+
+<!-- RSS -->
+<% if (config.feed && config.feed.path) { %>
+  <link rel="alternate" type="application/atom+xml" title="<%- config.title %>" href="<%- url_for(config.feed.path) %>">
+<% } %>

@@ -1,0 +1,33 @@
+{
+  "name": "hexo-theme-ocean-blue",
+  "version": "1.0.0",
+  "description": "A modern, clean and elegant blue theme for Hexo",
+  "main": "index.js",
+  "keywords": [
+    "hexo",
+    "theme",
+    "ocean-blue",
+    "blue",
+    "modern", 
+    "clean",
+    "elegant",
+    "responsive"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/hexo-theme-ocean-blue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/hexo-theme-ocean-blue/issues"
+  },
+  "homepage": "https://github.com/your-username/hexo-theme-ocean-blue#readme",
+  "engines": {
+    "node": ">=12.0.0",
+    "hexo": ">=5.0.0"
+  },
+  "devDependencies": {
+    "hexo-renderer-sass": "^0.4.0"
+  }
+}

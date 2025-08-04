@@ -1,0 +1,98 @@
+# Ocean Blue Theme Configuration
+
+# Header Menu
+menu:
+  首页: /
+  归档: /archives/
+  分类: /categories/
+  标签: /tags/
+  关于: /about/
+
+# Navigation
+nav:
+  github: "#"
+  rss: /atom.xml
+
+# Theme Settings
+theme_color: "#2196F3"  # Ocean blue primary color
+accent_color: "#03A9F4"  # Light blue accent
+
+# Site Info
+site_description: "简洁优雅的蓝色主题"
+keywords: "blog, hexo, ocean-blue"
+
+# Layout Settings
+layout:
+  sidebar: true
+  sidebar_position: right
+  max_width: 1200px
+  content_width: 800px
+
+# Typography
+typography:
+  font_family: '"Helvetica Neue", Helvetica, Arial, sans-serif'
+  font_size: 16px
+  line_height: 1.6
+
+# Article Settings
+article:
+  excerpt_link: "阅读全文"
+  show_meta: true
+  show_tags: true
+  show_categories: true
+  show_date: true
+  date_format: "YYYY-MM-DD"
+
+# Comments (disabled by default)
+comments:
+  enable: false
+  provider: disqus
+  disqus_shortname: ""
+
+# Social Links
+social:
+  github: ""
+  twitter: ""
+  facebook: ""
+  instagram: ""
+  linkedin: ""
+
+# Footer
+footer:
+  copyright: true
+  powered: true
+  theme_info: true
+
+# Code Highlight
+highlight:
+  enable: true
+  theme: "github"
+  line_number: true
+
+# Search
+search:
+  enable: false
+  
+# Analytics
+analytics:
+  google: ""
+  baidu: ""
+
+# Favicon
+favicon: /favicon.ico
+
+# Custom CSS
+custom_css: ""
+
+# Custom JS  
+custom_js: ""
+
+# Performance
+minify:
+  html: true
+  css: true
+  js: true
+
+# Development
+development:
+  livereload: false

@@ -1,0 +1,34 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <% if (theme.footer.copyright) { %>
+          <p class="copyright">
+            &copy; <%- date(new Date(), 'YYYY') %> <%- config.author %>. All rights reserved.
+          </p>
+        <% } %>
+        
+        <% if (theme.footer.powered) { %>
+          <p class="powered">
+            Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+            <% if (theme.footer.theme_info) { %>
+              & <a href="#" target="_blank" rel="noopener">Ocean Blue</a>
+            <% } %>
+          </p>
+        <% } %>
+      </div>
+      
+      <% if (theme.social) { %>
+        <div class="social-links">
+          <% for (let name in theme.social) { %>
+            <% if (theme.social[name]) { %>
+              <a href="<%- theme.social[name] %>" class="social-link" target="_blank" rel="noopener">
+                <span class="social-icon"><%- name %></span>
+              </a>
+            <% } %>
+          <% } %>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</footer>

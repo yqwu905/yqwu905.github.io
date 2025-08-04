@@ -2,7 +2,13 @@
 layout: post
 title: CPU学习(一) 流水线与冒险
 date: 2024-11-12 16:35:12
+categories:
+  - 计算机体系结构
 tags:
+  - CPU
+  - 处理器
+  - 流水线
+  - 体系结构
 ---
 # 前言
 
