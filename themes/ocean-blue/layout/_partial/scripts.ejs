@@ -5,6 +5,25 @@
   <script><%- theme.custom_js %></script>
 <% } %>
 
+<!-- Math Support -->
+<% if (theme.math && theme.math.enable && theme.math.engine === 'katex') { %>
+  <script defer src="<%- theme.math.katex.js %>"></script>
+  <script defer src="<%- theme.math.katex.auto_render %>"></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          <% theme.math.katex.options.delimiters.forEach(function(delimiter, index) { %>
+            {left: "<%- delimiter.left %>", right: "<%- delimiter.right %>", display: <%- delimiter.display %>}<% if (index < theme.math.katex.options.delimiters.length - 1) { %>,<% } %>
+          <% }) %>
+        ],
+        throwOnError: false,
+        errorColor: "#cc0000"
+      });
+    });
+  </script>
+<% } %>
+
 <!-- Analytics -->
 <% if (theme.analytics.google) { %>
   <!-- Google Analytics -->

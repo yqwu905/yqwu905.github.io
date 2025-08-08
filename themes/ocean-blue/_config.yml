@@ -14,8 +14,8 @@ nav:
   rss: /atom.xml
 
 # Theme Settings
-theme_color: "#2196F3"  # Ocean blue primary color
-accent_color: "#03A9F4"  # Light blue accent
+theme_color: "#2196F3" # Ocean blue primary color
+accent_color: "#03A9F4" # Light blue accent
 
 # Site Info
 site_description: "简洁优雅的蓝色主题"
@@ -69,10 +69,28 @@ highlight:
   theme: "github"
   line_number: true
 
+# Math Support
+math:
+  enable: true
+  engine: katex # katex or mathjax
+  auto_render: true
+  katex:
+    css: "https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+    js: "https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+    auto_render: "https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    options:
+      delimiters:
+        - left: "$$"
+          right: "$$"
+          display: true
+        - left: "$"
+          right: "$"
+          display: false
+
 # Search
 search:
   enable: false
-  
+
 # Analytics
 analytics:
   google: ""
@@ -84,7 +102,7 @@ favicon: /favicon.ico
 # Custom CSS
 custom_css: ""
 
-# Custom JS  
+# Custom JS
 custom_js: ""
 
 # Performance
@@ -96,3 +114,4 @@ minify:
 # Development
 development:
   livereload: false
+

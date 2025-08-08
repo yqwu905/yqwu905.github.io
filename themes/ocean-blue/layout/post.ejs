@@ -13,6 +13,10 @@
       <% if (page.author) { %>
         <span class="post-author">by <%- page.author %></span>
       <% } %>
+      <span class="post-stats">
+        <span class="word-count"><%- wordCount(page.content) %> 字</span>
+        <span class="reading-time">阅读时长 <%- formatReadingTime(page.content) %></span>
+      </span>
     </div>
   </header>
 

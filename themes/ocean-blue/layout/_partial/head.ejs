@@ -62,6 +62,11 @@
   <style><%- theme.custom_css %></style>
 <% } %>
 
+<!-- Math Support -->
+<% if (theme.math && theme.math.enable && theme.math.engine === 'katex') { %>
+  <link rel="stylesheet" href="<%- theme.math.katex.css %>">
+<% } %>
+
 <!-- RSS -->
 <% if (config.feed && config.feed.path) { %>
   <link rel="alternate" type="application/atom+xml" title="<%- config.title %>" href="<%- url_for(config.feed.path) %>">

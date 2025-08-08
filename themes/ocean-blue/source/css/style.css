@@ -442,6 +442,36 @@ body {
   transform: translateY(-1px);
 }
 
+.post .post-meta .post-stats {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--font-size-sm);
+}
+
+.post .post-meta .post-stats .word-count,
+.post .post-meta .post-stats .reading-time {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background: rgba(255, 255, 255, 0.2);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  backdrop-filter: blur(10px);
+  font-weight: 500;
+}
+
+.post .post-meta .post-stats .word-count::before {
+  content: '📝';
+  font-size: var(--font-size-sm);
+}
+
+.post .post-meta .post-stats .reading-time::before {
+  content: '⏱️';
+  font-size: var(--font-size-sm);
+}
+
 /* Post Content */
 .post .post-content {
   padding: var(--spacing-3xl) var(--spacing-2xl);
